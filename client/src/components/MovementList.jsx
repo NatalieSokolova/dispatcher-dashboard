@@ -1,7 +1,7 @@
 import React from "react";
 import useMovementData from "../hooks/useMovementData";
 
-export default function Movement() {
+export default function MovementList() {
   const { state } = useMovementData();
 
   return (
