@@ -2,6 +2,27 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function NewMovement() {
+  const [movement, setMovement] = useState({
+    start: null,
+    end: null,
+    description: "",
+  });
+
+  const handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    setMovement({
+      ...movement,
+      [name]: value,
+    });
+
+    console.log("NAME: ", name);
+    console.log("value: ", value);
+    console.log("movement: ", movement);
+  };
+
   return (
     <div>
       <div>Add New Movement:</div>
@@ -17,6 +38,7 @@ export default function NewMovement() {
               name="start"
               className="form-control"
               placeholder="start location"
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -30,6 +52,7 @@ export default function NewMovement() {
               name="end"
               className="form-control"
               placeholder="end location"
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -43,6 +66,7 @@ export default function NewMovement() {
               name="description"
               className="form-control"
               placeholder="freight description"
+              onChange={handleChange}
             />
           </div>
         </div>
