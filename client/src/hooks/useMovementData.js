@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useMovementData = () => {
   const [state, setState] = useState({ movements: [] });
 
   useEffect(() => {
-    fetch("http://localhost:3001/movements")
-      .then((res) => res.json(res))
-      .then((res) => setState((prev) => ({ ...prev, movements: res })))
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/movements",
+    })
+      .then((result) =>
+        setState((prev) => ({ ...prev, movements: result.data }))
+      )
       .catch((err) => console.log(err));
   }, []);
 
