@@ -1,12 +1,9 @@
 import React from "react";
-import useMovementData from "../hooks/useMovementData";
 
-export default function MovementList() {
-  const { state } = useMovementData();
-
+export default function MovementList({ state }) {
   return (
     <div>
-      {console.log("STATE: ", state.movements)}
+      {/* {console.log("STATE ML: ", state.movements)} */}
       <div>Movements:</div>
       <br />
       {state.movements.map((movement, index) => (
@@ -14,6 +11,15 @@ export default function MovementList() {
           <div>Start Location: {movement.start}</div>
           <div>End Location: {movement.end}</div>
           <div>Description: {movement.description}</div>
+          <div>
+            <button
+              // Click={handleUpdate}
+              type="submit"
+              // className="btn btn-default"
+            >
+              Update
+            </button>
+          </div>
           <hr />
         </div>
       ))}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { isDuplicate } from "../helpers";
 
-export default function NewMovement() {
+export default function NewMovement({ state }) {
   const [movement, setMovement] = useState({
     start: null,
     end: null,
@@ -18,9 +19,9 @@ export default function NewMovement() {
       [name]: value,
     });
 
-    console.log("NAME: ", name);
-    console.log("value: ", value);
-    console.log("movement: ", movement);
+    // console.log("NAME: ", name);
+    // console.log("value: ", value);
+    // console.log("movement: ", movement);
   };
 
   const handleSubmit = (event) => {
@@ -32,18 +33,24 @@ export default function NewMovement() {
       description: movement.description,
     };
 
-    // console.log("NEW: ", newMovement);
-    console.log("MOVEMENT: ", movement);
-    // if (newMovement.start && newMovement.end && newMovement.description) {
-    axios
-      .post("http://localhost:3001/movements", newMovement)
-      .then(console.log.bind(console))
-      .catch(console.error.bind(console));
-    // }
+    if (newMovement.start && newMovement.end && newMovement.description) {
+      if (!isDuplicate(movement, state.movements)) {
+        axios
+          .post("http://localhost:3001/movements", newMovement)
+          .then((result) =>
+            console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
+          )
+          .catch((err) => console.log(err));
+      } else {
+        console.log("Please, fill out all the fields! TOAST later!");
+      }
+    }
   };
 
   return (
     <div>
+      {/* {console.log("STATE NM: ", state.movements)} */}
+
       <div>Add New Movement:</div>
       <br />
       <form className="form-horizontal">
@@ -94,7 +101,7 @@ export default function NewMovement() {
             <button
               onClick={handleSubmit}
               type="submit"
-              className="btn btn-default"
+              // className="btn btn-default"
             >
               Submit
             </button>
