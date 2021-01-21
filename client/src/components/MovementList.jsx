@@ -9,14 +9,10 @@ export default function MovementList() {
       {console.log("STATE: ", state.movements)}
       <div>Movements:</div>
       <br />
-      {state.movements.map((movement) => (
-        <div key={movement.description}>
-          <div>
-            Start Location: {movement.start[0]}, {movement.start[1]}
-          </div>
-          <div>
-            End Location: {movement.end[0]}, {movement.end[1]}
-          </div>
+      {state.movements.map((movement, index) => (
+        <div key={index}>
+          <div>Start Location: {movement.start}</div>
+          <div>End Location: {movement.end}</div>
           <div>Description: {movement.description}</div>
           <hr />
         </div>

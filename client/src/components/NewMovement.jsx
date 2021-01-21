@@ -23,6 +23,25 @@ export default function NewMovement() {
     console.log("movement: ", movement);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newMovement = {
+      start: movement.start,
+      end: movement.end,
+      description: movement.description,
+    };
+
+    // console.log("NEW: ", newMovement);
+    console.log("MOVEMENT: ", movement);
+    // if (newMovement.start && newMovement.end && newMovement.description) {
+    axios
+      .post("http://localhost:3001/movements", newMovement)
+      .then(console.log.bind(console))
+      .catch(console.error.bind(console));
+    // }
+  };
+
   return (
     <div>
       <div>Add New Movement:</div>
@@ -72,8 +91,12 @@ export default function NewMovement() {
         </div>
         <div className="form-group">
           <div className="col-sm-offset-2 col-sm-10">
-            <button type="submit" className="btn btn-default">
-              Sign in
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-default"
+            >
+              Submit
             </button>
           </div>
         </div>
