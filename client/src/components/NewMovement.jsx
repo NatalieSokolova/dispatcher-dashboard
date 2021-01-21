@@ -18,10 +18,6 @@ export default function NewMovement({ state }) {
       ...movement,
       [name]: value,
     });
-
-    // console.log("NAME: ", name);
-    // console.log("value: ", value);
-    // console.log("movement: ", movement);
   };
 
   const handleSubmit = (event) => {
