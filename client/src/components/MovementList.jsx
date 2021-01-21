@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 
 export default function MovementList({ state }) {
-  const [index, setIndex] = useState(null);
+  const handleDelete = (event, index) => {
+    event.preventDefault();
+    console.log("I: ", index);
 
-  const handleDelete = (event) => {
-    // event.preventDefault();
     axios
-      .delete("http://localhost:3001/movements", index)
+      .delete("http://localhost:3001/movements", { data: { index } })
       .then((result) =>
         console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!")
       )
       .catch((err) => console.log(err));
   };
-
-  console.log("I: ", index);
 
   return (
     <div>
@@ -27,10 +25,7 @@ export default function MovementList({ state }) {
           <div>Description: {movement.description}</div>
           <div>
             <button
-              onClick={() => {
-                setIndex(index);
-                handleDelete();
-              }}
+              onClick={(event) => handleDelete(event, index)}
               type="submit"
               // className="btn btn-default"
             >

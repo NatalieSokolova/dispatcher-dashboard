@@ -15,7 +15,7 @@ let movementList = [
     description: "This is a very important test freight from TOR to MRL",
   },
 ];
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
   res.json(movementList);
 });
 
@@ -23,6 +23,13 @@ router.post("/", (req, res) => {
   console.log(req.body);
   movementList.push(req.body);
   res.send("movement added!");
+});
+
+router.delete("/", (req, res) => {
+  console.log("DELETE BODY: ", req.body);
+  movementList.splice(req.body.index, 1);
+  console.log("movementList: ", movementList);
+  res.send("movement deleted!");
 });
 
 module.exports = router;

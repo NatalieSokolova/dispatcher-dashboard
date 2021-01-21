@@ -10,8 +10,8 @@ const useMovementData = () => {
       url: "http://localhost:3001/movements",
     })
       .then(
-        (result) => setState((prev) => ({ ...prev, movements: result.data })),
-        console.log("LENGTH: ", state.movements.length)
+        (result) => setState((prev) => ({ ...prev, movements: result.data }))
+        // console.log("LENGTH: ", state.movements.length)
       )
       .catch((err) => console.log(err));
   }, []);
