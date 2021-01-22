@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [movements, setMovements] = useState([]);
 
-  console.log("MVMNTS: ", movements);
+  // console.log("MVMNTS: ", movements);
 
   useEffect(() => {
     axios({

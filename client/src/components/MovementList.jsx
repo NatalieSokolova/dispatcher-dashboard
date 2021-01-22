@@ -54,7 +54,7 @@ export default function MovementList({ movements, setMovements }) {
             <button
               onClick={(event) => {
                 showUpdateForm(event, movement, index);
-                // setMovementIndex(index);
+                setMovement(movement);
               }}
               type="submit"
               // className="btn btn-default"
