@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
+  console.log("POST BODY: ", req.body);
   movementList.push(req.body);
   res.send("movement added!");
 });
@@ -30,6 +30,13 @@ router.delete("/", (req, res) => {
   movementList.splice(req.body.index, 1);
   console.log("movementList: ", movementList);
   res.send("movement deleted!");
+});
+
+router.put("/", (req, res) => {
+  console.log("UPDATE BODY: ", req.body);
+  movementList.splice(req.body.index, 1, req.body.movement);
+  console.log("movementList: ", movementList);
+  res.send("movement udated!");
 });
 
 module.exports = router;
