@@ -23,10 +23,12 @@ export default function MovementList({ state }) {
       .catch((err) => console.log(err));
   };
 
+  console.log("UPD: ", movement);
+
   const handleUpdate = (event, movement) => {
     event.preventDefault();
-    console.log("MOV: ", movement);
     setShowForm(true);
+    setMovement(movement);
   };
 
   return (

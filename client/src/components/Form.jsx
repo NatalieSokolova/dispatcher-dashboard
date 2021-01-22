@@ -41,8 +41,8 @@ export default function NewMovement({
           .then(
             (result) =>
               // document.getElementById("movement-form").reset(),
-              // setMovement({}),
-              setShowForm(false),
+              setMovement({}),
+            setShowForm(false),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
           .catch((err) => console.log(err));
