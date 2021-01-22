@@ -33,7 +33,9 @@ export default function NewMovement({ state }) {
       if (!isDuplicate(movement, state.movements)) {
         axios
           .post("http://localhost:3001/movements", newMovement)
-          .then((result) =>
+          .then(
+            (result) => document.getElementById("movement-form").reset(),
+            setMovement({}),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
           .catch((err) => console.log(err));
@@ -49,7 +51,7 @@ export default function NewMovement({ state }) {
 
       <div>Add New Movement:</div>
       <br />
-      <form className="form-horizontal">
+      <form className="form-horizontal" id="movement-form">
         <div className="form-group">
           <label htmlFor="start" className="col-sm-2 control-label">
             start:
