@@ -49,7 +49,10 @@ export default function MovementList({ state }) {
           <div>Description: {movement.description}</div>
           <div>
             <button
-              onClick={(event) => showUpdateForm(event, movement, index)}
+              onClick={(event) => {
+                showUpdateForm(event, movement, index);
+                // setMovementIndex(index);
+              }}
               type="submit"
               // className="btn btn-default"
             >

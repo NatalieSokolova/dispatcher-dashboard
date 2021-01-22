@@ -22,6 +22,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   console.log("POST BODY: ", req.body);
   movementList.push(req.body);
+  // add res.status 201 (created)
   res.send("movement added!");
 });
 

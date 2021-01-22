@@ -1,6 +1,10 @@
 // checks is a movement already exists
 const isDuplicate = (obj, arr) => {
   let result = false;
+  // change forEach to find
+  // remove booleans and if stat.
+  // return arr.find
+
   arr.forEach((movementObj) => {
     if (
       obj.start === movementObj.start &&
@@ -15,7 +19,7 @@ const isDuplicate = (obj, arr) => {
 };
 
 const isFilledOut = (obj) => {
-  return obj.start && obj.end && obj.description ? true : false;
+  return obj.start && obj.end && obj.description;
 };
 
 export { isDuplicate, isFilledOut };

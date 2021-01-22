@@ -99,6 +99,7 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
+              // defaultValue={movement.start}
               type="text"
               name="start"
               className="form-control"
@@ -113,6 +114,7 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
+              // defaultValue={movement.end}
               type="text"
               name="end"
               className="form-control"
@@ -127,6 +129,7 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
+              // defaultValue={movement.description}
               type="text"
               name="description"
               className="form-control"
