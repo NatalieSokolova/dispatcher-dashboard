@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "./Form";
 import axios from "axios";
 
-export default function MovementList({ state }) {
+export default function MovementList({ movements, setMovements }) {
   const [showForm, setShowForm] = useState(false);
 
   const [movement, setMovement] = useState({
@@ -22,9 +22,12 @@ export default function MovementList({ state }) {
     ) {
       axios
         .delete("http://localhost:3001/movements", { data: { index } })
-        .then((result) =>
-          console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!")
-        )
+        .then((result) => {
+          console.log("index: ", index);
+          let updatedMovements = movements.filter((mov, i) => i !== index);
+          setMovements(updatedMovements);
+          console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!");
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -42,7 +45,7 @@ export default function MovementList({ state }) {
     <div>
       <div>Movements:</div>
       <br />
-      {state.movements.map((movement, index) => (
+      {movements.map((movement, index) => (
         <div key={index}>
           <div>Start Location: {movement.start}</div>
           <div>End Location: {movement.end}</div>
@@ -83,7 +86,8 @@ export default function MovementList({ state }) {
       {showForm ? (
         <div>
           <Form
-            state={state}
+            movements={movements}
+            setMovements={setMovements}
             setShowForm={setShowForm}
             movement={movement}
             movementIndex={movementIndex}

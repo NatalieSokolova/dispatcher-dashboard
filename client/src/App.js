@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MovementList from "./components/MovementList";
-// import NewMovement from "./components/Form";
-import useMovementData from "./hooks/useMovementData";
+import axios from "axios";
 import "./App.css";
 
 function App() {
-  const { state } = useMovementData();
+  const [movements, setMovements] = useState([]);
+
+  console.log("MVMNTS: ", movements);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/movements",
+    })
+      .then((result) => {
+        setMovements(result.data);
+      })
+      .catch((err) => console.log(err));
+  }, [movements.length]);
 
   return (
     <div>
-      <MovementList state={state} />
-      {/* <NewMovement state={state} /> */}
+      <MovementList movements={movements} setMovements={setMovements} />
     </div>
   );
 }

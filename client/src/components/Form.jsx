@@ -3,18 +3,13 @@ import axios from "axios";
 import { isDuplicate, isFilledOut } from "../helpers";
 
 export default function Form({
-  state,
+  movements,
+  setMovements,
   movementIndex,
   movement,
   setMovement,
   setShowForm,
 }) {
-  // const [movement, setMovement] = useState({
-  //   start: null,
-  //   end: null,
-  //   description: "",
-  // });
-
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
@@ -41,19 +36,18 @@ export default function Form({
     movementIndex !== null
       ? handleUpdate(newMovement, movementIndex)
       : handlePost(newMovement);
-
-    // return [setMovement({}), setShowForm(false)];
   };
 
   const handlePost = (obj) => {
     console.log("POST IND: ", movementIndex);
 
     if (isFilledOut(obj)) {
-      if (!isDuplicate(movement, state.movements)) {
+      if (!isDuplicate(movement, movements)) {
         axios
           .post("http://localhost:3001/movements", obj)
           .then(
             (result) => setMovement({}),
+            setMovements((prev) => [...prev, obj]),
             setShowForm(false),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
@@ -70,13 +64,14 @@ export default function Form({
     console.log("UPD IND: ", movementIndex);
 
     if (isFilledOut(obj)) {
-      if (!isDuplicate(movement, state.movements)) {
+      if (!isDuplicate(movement, movements)) {
         axios
           .put("http://localhost:3001/movements", {
             data: { index: index, movement: obj },
           })
           .then(
             (result) => setMovement({}),
+            setMovements((prev) => [...prev, obj]),
             setShowForm(false),
             console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
           )
