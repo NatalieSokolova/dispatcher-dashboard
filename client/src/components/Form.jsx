@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { isDuplicate } from "../helpers";
 
-export default function NewMovement({ state }) {
-  const [movement, setMovement] = useState({
-    start: null,
-    end: null,
-    description: "",
-  });
+export default function NewMovement({
+  state,
+  movement,
+  setMovement,
+  setShowForm,
+}) {
+  // const [movement, setMovement] = useState({
+  //   start: null,
+  //   end: null,
+  //   description: "",
+  // });
 
   const handleChange = (event) => {
     const target = event.target;
@@ -34,23 +39,24 @@ export default function NewMovement({ state }) {
         axios
           .post("http://localhost:3001/movements", newMovement)
           .then(
-            (result) => document.getElementById("movement-form").reset(),
-            setMovement({}),
+            (result) =>
+              // document.getElementById("movement-form").reset(),
+              // setMovement({}),
+              setShowForm(false),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
           .catch((err) => console.log(err));
       } else {
-        console.log("Please, fill out all the fields! TOAST later!");
+        console.log("Sorry, movement already exists! TOAST later!");
       }
+    } else {
+      console.log("Please, fill out all the fields! TOAST later!");
     }
   };
 
   return (
     <div>
-      {/* {console.log("STATE NM: ", state.movements)} */}
-
-      <div>Add New Movement:</div>
-      <br />
+      {console.log("MOV: ", movement)}
       <form className="form-horizontal" id="movement-form">
         <div className="form-group">
           <label htmlFor="start" className="col-sm-2 control-label">

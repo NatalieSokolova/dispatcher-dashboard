@@ -1,6 +1,6 @@
 import React from "react";
 import MovementList from "./components/MovementList";
-import NewMovement from "./components/NewMovement";
+// import NewMovement from "./components/Form";
 import useMovementData from "./hooks/useMovementData";
 import "./App.css";
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <MovementList state={state} />
-      <NewMovement state={state} />
+      {/* <NewMovement state={state} /> */}
     </div>
   );
 }

@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import Form from "./Form";
 import axios from "axios";
 
 export default function MovementList({ state }) {
+  const [showForm, setShowForm] = useState(false);
+
+  const [movement, setMovement] = useState({
+    start: null,
+    end: null,
+    description: "",
+  });
+
   const handleDelete = (event, index) => {
     event.preventDefault();
     console.log("I: ", index);
@@ -12,6 +21,12 @@ export default function MovementList({ state }) {
         console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!")
       )
       .catch((err) => console.log(err));
+  };
+
+  const handleUpdate = (event, movement) => {
+    event.preventDefault();
+    console.log("MOV: ", movement);
+    setShowForm(true);
   };
 
   return (
@@ -31,10 +46,36 @@ export default function MovementList({ state }) {
             >
               Delete
             </button>
+            <button
+              onClick={(event) => handleUpdate(event, movement)}
+              type="submit"
+              // className="btn btn-default"
+            >
+              Update
+            </button>
           </div>
           <hr />
         </div>
       ))}
+      <button
+        onClick={() => {
+          setShowForm(true);
+        }}
+        // type="submit"
+        // className="btn btn-default"
+      >
+        Add Movement
+      </button>
+      {showForm ? (
+        <div>
+          <Form
+            state={state}
+            setShowForm={setShowForm}
+            movement={movement}
+            setMovement={setMovement}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
