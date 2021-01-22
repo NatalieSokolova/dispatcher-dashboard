@@ -15,12 +15,16 @@ export default function MovementList({ state }) {
     event.preventDefault();
     console.log("I: ", index);
 
-    axios
-      .delete("http://localhost:3001/movements", { data: { index } })
-      .then((result) =>
-        console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!")
-      )
-      .catch((err) => console.log(err));
+    if (
+      window.confirm("Are you sure you would like to delete this movement?")
+    ) {
+      axios
+        .delete("http://localhost:3001/movements", { data: { index } })
+        .then((result) =>
+          console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!")
+        )
+        .catch((err) => console.log(err));
+    }
   };
 
   console.log("UPD: ", movement);
@@ -42,18 +46,18 @@ export default function MovementList({ state }) {
           <div>Description: {movement.description}</div>
           <div>
             <button
-              onClick={(event) => handleDelete(event, index)}
-              type="submit"
-              // className="btn btn-default"
-            >
-              Delete
-            </button>
-            <button
               onClick={(event) => handleUpdate(event, movement)}
               type="submit"
               // className="btn btn-default"
             >
               Update
+            </button>
+            <button
+              onClick={(event) => handleDelete(event, index)}
+              type="submit"
+              // className="btn btn-default"
+            >
+              Delete
             </button>
           </div>
           <hr />
@@ -62,6 +66,7 @@ export default function MovementList({ state }) {
       <button
         onClick={() => {
           setShowForm(true);
+          setMovement({});
         }}
         // type="submit"
         // className="btn btn-default"
