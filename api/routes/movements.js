@@ -1,5 +1,4 @@
 var express = require("express");
-const { start } = require("repl");
 var router = express.Router();
 
 let movementList = [
@@ -22,8 +21,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   console.log("POST BODY: ", req.body);
   movementList.push(req.body);
-  // add res.status 201 (created)
-  res.send("movement added!");
+  res.status(201).send("movement added!");
 });
 
 router.delete("/", (req, res) => {
