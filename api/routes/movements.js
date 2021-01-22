@@ -34,8 +34,11 @@ router.delete("/", (req, res) => {
 
 router.put("/", (req, res) => {
   console.log("UPDATE BODY: ", req.body);
-  movementList.splice(req.body.index, 1, req.body.movement);
-  console.log("movementList: ", movementList);
+  movementList.splice(req.body.data.index, 1, req.body.data.movement);
+  // console.log("movementList: ", movementList);
+  // console.log("req.body.index: ", req.body.data.index);
+  // console.log("req.body.movement: ", req.body.data.movement);
+
   res.send("movement udated!");
 });
 

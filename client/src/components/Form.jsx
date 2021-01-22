@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import { isDuplicate } from "../helpers";
 
-export default function NewMovement({
+export default function Form({
   state,
+  movementIndex,
   movement,
   setMovement,
   setShowForm,
@@ -34,15 +35,24 @@ export default function NewMovement({
       description: movement.description,
     };
 
-    if (newMovement.start && newMovement.end && newMovement.description) {
+    // check for movementIndex
+    console.log("IND: ", movementIndex);
+
+    movementIndex !== null
+      ? handleUpdate(newMovement, movementIndex)
+      : handlePost(newMovement);
+
+    return [setMovement({}), setShowForm(false)];
+  };
+
+  const handlePost = (obj) => {
+    console.log("POST IND: ", movementIndex);
+
+    if (obj.start && obj.end && obj.description) {
       if (!isDuplicate(movement, state.movements)) {
         axios
-          .post("http://localhost:3001/movements", newMovement)
-          .then(
-            (result) =>
-              // document.getElementById("movement-form").reset(),
-              setMovement({}),
-            setShowForm(false),
+          .post("http://localhost:3001/movements", obj)
+          .then((result) =>
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
           .catch((err) => console.log(err));
@@ -51,6 +61,23 @@ export default function NewMovement({
       }
     } else {
       console.log("Please, fill out all the fields! TOAST later!");
+    }
+  };
+
+  const handleUpdate = (obj, index) => {
+    console.log("UPD IND: ", movementIndex);
+
+    if (!isDuplicate(movement, state.movements)) {
+      axios
+        .put("http://localhost:3001/movements", {
+          data: { index: index, movement: obj },
+        })
+        .then((result) =>
+          console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
+        )
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Sorry, movement already exists! TOAST later!");
     }
   };
 

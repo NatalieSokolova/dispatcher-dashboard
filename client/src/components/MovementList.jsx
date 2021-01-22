@@ -11,6 +11,8 @@ export default function MovementList({ state }) {
     description: "",
   });
 
+  const [movementIndex, setMovementIndex] = useState(null);
+
   const handleDelete = (event, index) => {
     event.preventDefault();
     console.log("I: ", index);
@@ -29,10 +31,11 @@ export default function MovementList({ state }) {
 
   console.log("UPD: ", movement);
 
-  const handleUpdate = (event, movement) => {
+  const showUpdateForm = (event, movement, index) => {
     event.preventDefault();
     setShowForm(true);
     setMovement(movement);
+    setMovementIndex(index);
   };
 
   return (
@@ -46,7 +49,7 @@ export default function MovementList({ state }) {
           <div>Description: {movement.description}</div>
           <div>
             <button
-              onClick={(event) => handleUpdate(event, movement)}
+              onClick={(event) => showUpdateForm(event, movement, index)}
               type="submit"
               // className="btn btn-default"
             >
@@ -67,6 +70,7 @@ export default function MovementList({ state }) {
         onClick={() => {
           setShowForm(true);
           setMovement({});
+          setMovementIndex(null);
         }}
         // type="submit"
         // className="btn btn-default"
@@ -79,6 +83,7 @@ export default function MovementList({ state }) {
             state={state}
             setShowForm={setShowForm}
             movement={movement}
+            movementIndex={movementIndex}
             setMovement={setMovement}
           />
         </div>
