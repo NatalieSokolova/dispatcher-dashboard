@@ -15,6 +15,9 @@ export default function Form({
     const name = target.name;
     const value = target.value;
 
+    console.log("NAME: ", name);
+    console.log("VALUE: ", value);
+
     setMovement({
       ...movement,
       [name]: value,
@@ -25,8 +28,14 @@ export default function Form({
     event.preventDefault();
 
     const newMovement = {
-      start: movement.start,
-      end: movement.end,
+      // startLat: { lat: movement.startLat, long: movement.start.long },
+      // end: { lat: movement.end.lat, long: movement.end.long },
+      // description: movement.description,
+
+      startLat: movement.startLat,
+      startLong: movement.startLong,
+      endLat: movement.endLat,
+      endLong: movement.endLong,
       description: movement.description,
     };
 
@@ -94,11 +103,19 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
-              defaultValue={movement.start}
+              defaultValue={movement.startLat}
               type="text"
-              name="start"
+              name="startLat"
               className="form-control"
-              placeholder="start location"
+              placeholder="latitude"
+              onChange={handleChange}
+            />
+            <input
+              defaultValue={movement.startLong}
+              type="text"
+              name="startLong"
+              className="form-control"
+              placeholder="longitude"
               onChange={handleChange}
             />
           </div>
@@ -109,11 +126,19 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
-              defaultValue={movement.end}
+              defaultValue={movement.endLat}
               type="text"
-              name="end"
+              name="endLat"
               className="form-control"
-              placeholder="end location"
+              placeholder="latitude"
+              onChange={handleChange}
+            />
+            <input
+              defaultValue={movement.endLong}
+              type="text"
+              name="endLong"
+              className="form-control"
+              placeholder="longitude"
               onChange={handleChange}
             />
           </div>

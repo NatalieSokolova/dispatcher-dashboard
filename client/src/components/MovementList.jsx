@@ -6,8 +6,10 @@ export default function MovementList({ movements, setMovements }) {
   const [showForm, setShowForm] = useState(false);
 
   const [movement, setMovement] = useState({
-    start: null,
-    end: null,
+    startLat: null,
+    startLong: null,
+    endLat: null,
+    endLong: null,
     description: "",
   });
 
@@ -47,14 +49,19 @@ export default function MovementList({ movements, setMovements }) {
       <br />
       {movements.map((movement, index) => (
         <div key={index}>
-          <div>Start Location: {movement.start}</div>
-          <div>End Location: {movement.end}</div>
+          <div>
+            Start Location: {movement.startLat}, {movement.startLong}
+          </div>
+          <div>
+            End Location: {movement.endLat}, {movement.endLong}
+          </div>
           <div>Description: {movement.description}</div>
           <div>
             <button
               onClick={(event) => {
                 showUpdateForm(event, movement, index);
                 setMovement(movement);
+                // console.log("M :", movement);
               }}
               type="submit"
               // className="btn btn-default"
@@ -76,6 +83,7 @@ export default function MovementList({ movements, setMovements }) {
         onClick={() => {
           setShowForm(true);
           setMovement({});
+          // console.log("M :", movement);
           setMovementIndex(null);
         }}
         // type="submit"

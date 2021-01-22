@@ -2,14 +2,23 @@
 const isDuplicate = (obj, arr) => {
   return arr.find(
     (element) =>
-      obj.start === element.start &&
-      obj.end === element.end &&
+      obj.startLat === element.startLat &&
+      obj.startLong === element.startLong &&
+      obj.endLat === element.endLat &&
+      obj.endLong === element.endLong &&
       obj.description === element.description
   );
 };
 
 const isFilledOut = (obj) => {
-  return obj.start && obj.end && obj.description;
+  console.log("OBJ: ", obj);
+  return (
+    obj.startLat &&
+    obj.startLong &&
+    obj.endLat &&
+    obj.endLong &&
+    obj.description
+  );
 };
 
 export { isDuplicate, isFilledOut };
