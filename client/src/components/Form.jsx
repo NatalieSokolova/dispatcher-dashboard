@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { isDuplicate } from "../helpers";
+import { isDuplicate, isFilledOut } from "../helpers";
 
 export default function Form({
   state,
@@ -42,17 +42,19 @@ export default function Form({
       ? handleUpdate(newMovement, movementIndex)
       : handlePost(newMovement);
 
-    return [setMovement({}), setShowForm(false)];
+    // return [setMovement({}), setShowForm(false)];
   };
 
   const handlePost = (obj) => {
     console.log("POST IND: ", movementIndex);
 
-    if (obj.start && obj.end && obj.description) {
+    if (isFilledOut(obj)) {
       if (!isDuplicate(movement, state.movements)) {
         axios
           .post("http://localhost:3001/movements", obj)
-          .then((result) =>
+          .then(
+            (result) => setMovement({}),
+            setShowForm(false),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
           .catch((err) => console.log(err));
@@ -67,17 +69,23 @@ export default function Form({
   const handleUpdate = (obj, index) => {
     console.log("UPD IND: ", movementIndex);
 
-    if (!isDuplicate(movement, state.movements)) {
-      axios
-        .put("http://localhost:3001/movements", {
-          data: { index: index, movement: obj },
-        })
-        .then((result) =>
-          console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
-        )
-        .catch((err) => console.log(err));
+    if (isFilledOut(obj)) {
+      if (!isDuplicate(movement, state.movements)) {
+        axios
+          .put("http://localhost:3001/movements", {
+            data: { index: index, movement: obj },
+          })
+          .then(
+            (result) => setMovement({}),
+            setShowForm(false),
+            console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
+          )
+          .catch((err) => console.log(err));
+      } else {
+        console.log("Sorry, movement already exists! TOAST later!");
+      }
     } else {
-      console.log("Sorry, movement already exists! TOAST later!");
+      console.log("Please, fill out all the fields! TOAST later!");
     }
   };
 

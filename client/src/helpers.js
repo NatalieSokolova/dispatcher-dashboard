@@ -14,4 +14,8 @@ const isDuplicate = (obj, arr) => {
   return result;
 };
 
-export { isDuplicate };
+const isFilledOut = (obj) => {
+  return obj.start && obj.end && obj.description ? true : false;
+};
+
+export { isDuplicate, isFilledOut };
