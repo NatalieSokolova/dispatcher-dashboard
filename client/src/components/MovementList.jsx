@@ -22,9 +22,7 @@ export default function MovementList({ movements, setMovements }) {
   const handleDelete = (event, index) => {
     event.preventDefault();
     // console.log("I: ", index);
-    setShowForm(false);
-    setMovement({});
-    setMovementIndex(null);
+
     // sends a delete request only if a user clicks "OK"
     if (
       window.confirm("Are you sure you would like to delete this movement?")
@@ -37,6 +35,9 @@ export default function MovementList({ movements, setMovements }) {
 
           // updates state, causes the component to rerender
           setMovements(updatedMovements);
+          setShowForm(false);
+          setMovement({});
+          setMovementIndex(null);
           notifySuccessDelete("Movement deleted!");
         })
         .catch((err) => {
