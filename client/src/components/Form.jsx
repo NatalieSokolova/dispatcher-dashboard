@@ -46,12 +46,13 @@ export default function Form({
   };
 
   const handlePost = (obj) => {
-    // console.log("POST IND: ", movementIndex);
+    console.log("POST IND: ", movementIndex);
 
     // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
       // checks if a movement with the same values already exists
       if (!isDuplicate(movement, movements)) {
+        console.log("MMM: ", movement);
         axios
           .post("http://localhost:3001/movements", obj)
           .then(
