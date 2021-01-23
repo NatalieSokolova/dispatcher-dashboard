@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import MovementList from "./components/MovementList";
 import Map from "./components/Map";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notifyError } from "./helpers";
 import axios from "axios";
 import "./App.css";
 
 function App() {
+  toast.configure();
+
   const [movements, setMovements] = useState([]);
 
   // console.log("MVMNTS: ", movements);
@@ -17,7 +22,10 @@ function App() {
       .then((result) => {
         setMovements(result.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        notifyError("OOPS! Something went wrong. Please, try again");
+        console.log(err);
+      });
   }, [movements.length]);
 
   return (

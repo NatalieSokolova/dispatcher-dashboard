@@ -1,3 +1,59 @@
+import { toast } from "react-toastify";
+
+const notifySuccessPost = (message) =>
+  toast.success(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
+const notifySuccessDelete = (message) =>
+  toast.success(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
+const notifySuccessUpdate = (message) =>
+  toast.success(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
+const notifyEmptyFields = (message) =>
+  toast.warning(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
+const notifyDuplicate = (message) =>
+  toast.error(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
+const notifyError = (message) =>
+  toast.error(message, {
+    autoClose: 5000,
+    // hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    progress: undefined,
+  });
+
 // checks is a movement already exists
 const isDuplicate = (obj, arr) => {
   return arr.find(
@@ -22,4 +78,13 @@ const isFilledOut = (obj) => {
   );
 };
 
-export { isDuplicate, isFilledOut };
+export {
+  isDuplicate,
+  isFilledOut,
+  notifySuccessPost,
+  notifySuccessDelete,
+  notifySuccessUpdate,
+  notifyEmptyFields,
+  notifyDuplicate,
+  notifyError,
+};

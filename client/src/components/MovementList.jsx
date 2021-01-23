@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { notifySuccessDelete, notifyError } from "../helpers";
 
 export default function MovementList({ movements, setMovements }) {
+  toast.configure();
+
   const [showForm, setShowForm] = useState(false);
 
   const [movement, setMovement] = useState({
@@ -18,7 +22,9 @@ export default function MovementList({ movements, setMovements }) {
   const handleDelete = (event, index) => {
     event.preventDefault();
     // console.log("I: ", index);
-
+    setShowForm(false);
+    setMovement({});
+    setMovementIndex(null);
     // sends a delete request only if a user clicks "OK"
     if (
       window.confirm("Are you sure you would like to delete this movement?")
@@ -31,9 +37,12 @@ export default function MovementList({ movements, setMovements }) {
 
           // updates state, causes the component to rerender
           setMovements(updatedMovements);
-          console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!");
+          notifySuccessDelete("Movement deleted!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          notifyError("OOPS! Something went wrong. Please, try again");
+          console.log(err);
+        });
     }
   };
 

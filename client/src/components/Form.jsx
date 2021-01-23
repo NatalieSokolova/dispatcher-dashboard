@@ -1,6 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { isDuplicate, isFilledOut } from "../helpers";
+import { toast } from "react-toastify";
+import {
+  isDuplicate,
+  isFilledOut,
+  notifyError,
+  notifySuccessPost,
+  notifySuccessUpdate,
+  notifyEmptyFields,
+  notifyDuplicate,
+} from "../helpers";
 
 export default function Form({
   movements,
@@ -10,6 +19,8 @@ export default function Form({
   setMovement,
   setShowForm,
 }) {
+  toast.configure();
+
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
@@ -59,14 +70,17 @@ export default function Form({
             setMovements((prev) => [...prev, obj]),
             // hides form on successful submit
             setShowForm(false),
-            console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
+            notifySuccessPost("Movement created!")
           )
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            notifyError("OOPS! Something went wrong. Please, try again");
+            console.log(err);
+          });
       } else {
-        console.log("Sorry, movement already exists! TOAST later!");
+        notifyDuplicate("Sorry, movement already exists!");
       }
     } else {
-      console.log("Please, fill out all the fields! TOAST later!");
+      notifyEmptyFields("Please, fill out all the fields!");
     }
   };
 
@@ -86,14 +100,17 @@ export default function Form({
             setMovements((prev) => [...prev, obj]),
             // hides form on successful submit
             setShowForm(false),
-            console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
+            notifySuccessUpdate("Movement updated!")
           )
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            notifyError("OOPS! Something went wrong. Please, try again");
+            console.log(err);
+          });
       } else {
-        console.log("Sorry, movement already exists! TOAST later!");
+        notifyDuplicate("Sorry, movement already exists!");
       }
     } else {
-      console.log("Please, fill out all the fields! TOAST later!");
+      notifyEmptyFields("Please, fill out all the fields!");
     }
   };
 
