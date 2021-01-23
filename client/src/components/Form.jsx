@@ -15,9 +15,10 @@ export default function Form({
     const name = target.name;
     const value = target.value;
 
-    console.log("NAME: ", name);
-    console.log("VALUE: ", value);
+    // console.log("NAME: ", name);
+    // console.log("VALUE: ", value);
 
+    // updates state with form input values
     setMovement({
       ...movement,
       [name]: value,
@@ -27,11 +28,8 @@ export default function Form({
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // object, which will be sent in a post or update request
     const newMovement = {
-      // startLat: { lat: movement.startLat, long: movement.start.long },
-      // end: { lat: movement.end.lat, long: movement.end.long },
-      // description: movement.description,
-
       startLat: movement.startLat,
       startLong: movement.startLong,
       endLat: movement.endLat,
@@ -39,24 +37,27 @@ export default function Form({
       description: movement.description,
     };
 
-    // check for movementIndex
-    console.log("IND: ", movementIndex);
+    // console.log("IND: ", movementIndex);
 
+    // sends either update or post request based on whether "update" or "add movement" btn was clicked
     movementIndex !== null
       ? handleUpdate(newMovement, movementIndex)
       : handlePost(newMovement);
   };
 
   const handlePost = (obj) => {
-    console.log("POST IND: ", movementIndex);
+    // console.log("POST IND: ", movementIndex);
 
+    // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
+      // checks if a movement with the same values already exists
       if (!isDuplicate(movement, movements)) {
         axios
           .post("http://localhost:3001/movements", obj)
           .then(
             (result) => setMovement({}),
             setMovements((prev) => [...prev, obj]),
+            // hides form on successful submit
             setShowForm(false),
             console.log("MOVEMENT SUBMITTED SUCCESSFULLY! TOAST later!")
           )
@@ -72,7 +73,9 @@ export default function Form({
   const handleUpdate = (obj, index) => {
     console.log("UPD IND: ", movementIndex);
 
+    // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
+      // checks if a movement with the same values already exists
       if (!isDuplicate(movement, movements)) {
         axios
           .put("http://localhost:3001/movements", {
@@ -81,6 +84,7 @@ export default function Form({
           .then(
             (result) => setMovement({}),
             setMovements((prev) => [...prev, obj]),
+            // hides form on successful submit
             setShowForm(false),
             console.log("MOVEMENT UPDATED SUCCESSFULLY! TOAST later!")
           )
@@ -95,7 +99,7 @@ export default function Form({
 
   return (
     <div>
-      {console.log("MOV: ", movement)}
+      {/* {console.log("MOV: ", movement)} */}
       <form className="form-horizontal" id="movement-form">
         <div className="form-group">
           <label htmlFor="start" className="col-sm-2 control-label">
@@ -103,6 +107,8 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
+              autoComplete="off"
+              // used to show values, when updating an existing movement
               defaultValue={movement.startLat}
               type="text"
               name="startLat"

@@ -17,16 +17,19 @@ export default function MovementList({ movements, setMovements }) {
 
   const handleDelete = (event, index) => {
     event.preventDefault();
-    console.log("I: ", index);
+    // console.log("I: ", index);
 
+    // sends a delete request only if a user clicks "OK"
     if (
       window.confirm("Are you sure you would like to delete this movement?")
     ) {
       axios
         .delete("http://localhost:3001/movements", { data: { index } })
         .then((result) => {
-          console.log("index: ", index);
+          // console.log("index: ", index);
           let updatedMovements = movements.filter((mov, i) => i !== index);
+
+          // updates state, causes the component to rerender
           setMovements(updatedMovements);
           console.log("MOVEMENT DELETED SUCCESSFULLY! TOAST later!");
         })
@@ -34,7 +37,7 @@ export default function MovementList({ movements, setMovements }) {
     }
   };
 
-  console.log("UPD: ", movement);
+  // console.log("UPD: ", movement);
 
   const showUpdateForm = (event, movement, index) => {
     event.preventDefault();
