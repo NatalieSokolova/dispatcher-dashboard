@@ -20,7 +20,7 @@
 
 .btn-group > button {
   margin: 15px;
-  border-radius: 2px !important;
+  border-radius: 0.25rem !important;
 }
 
 @media only screen and (max-width: 800px) {

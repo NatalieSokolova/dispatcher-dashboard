@@ -7,6 +7,6 @@
 @media only screen and (max-width: 800px) {
   #map {
     width: 80vw;
-    margin: 7.5vh 10vw;
+    margin: 2.5vh 10vw 7.5vh;
   }
 }

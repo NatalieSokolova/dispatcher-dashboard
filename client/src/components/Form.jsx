@@ -10,6 +10,7 @@ import {
   notifyEmptyFields,
   notifyDuplicate,
 } from "../helpers";
+import "./Form.css";
 
 export default function Form({
   movements,
@@ -123,7 +124,7 @@ export default function Form({
           <label htmlFor="start" className="col-sm-2 control-label">
             start:
           </label>
-          <div className="col-sm-10">
+          <span className="input-group">
             <input
               autoComplete="off"
               // used to show values, when updating an existing movement
@@ -142,13 +143,13 @@ export default function Form({
               placeholder="longitude"
               onChange={handleChange}
             />
-          </div>
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="end" className="col-sm-2 control-label">
-            end
+            end:
           </label>
-          <div className="col-sm-10">
+          <span className="input-group">
             <input
               value={movement.endLat || ""}
               type="text"
@@ -165,14 +166,14 @@ export default function Form({
               placeholder="longitude"
               onChange={handleChange}
             />
-          </div>
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="description" className="col-sm-2 control-label">
-            description
+            description:
           </label>
-          <div className="col-sm-10">
-            <input
+          <div>
+            <textarea
               value={movement.description || ""}
               type="text"
               name="description"
@@ -183,11 +184,11 @@ export default function Form({
           </div>
         </div>
         <div className="form-group">
-          <div className="col-sm-offset-2 col-sm-10">
+          <div className="col-sm-offset-2 btn-group">
             <button
               onClick={handleSubmit}
-              type="submit"
-              // className="btn btn-default"
+              type="button"
+              className="btn btn-success"
             >
               Submit
             </button>
