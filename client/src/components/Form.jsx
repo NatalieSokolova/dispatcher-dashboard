@@ -30,10 +30,10 @@ export default function Form({
 
     // object, which will be sent in a post or update request
     const newMovement = {
-      startLat: movement.startLat,
-      startLong: movement.startLong,
-      endLat: movement.endLat,
-      endLong: movement.endLong,
+      startLat: Number(movement.startLat),
+      startLong: Number(movement.startLong),
+      endLat: Number(movement.endLat),
+      endLong: Number(movement.endLong),
       description: movement.description,
     };
 
