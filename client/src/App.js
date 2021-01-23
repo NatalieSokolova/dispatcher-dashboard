@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovementList from "./components/MovementList";
+import Map from "./components/Map";
 import axios from "axios";
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <div>
       <MovementList movements={movements} setMovements={setMovements} />
+      <Map movements={movements} setMovements={setMovements} />
     </div>
   );
 }
