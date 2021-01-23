@@ -31,7 +31,7 @@ function App() {
   }, [movements.length]);
 
   return (
-    <div>
+    <div id="dashboard">
       <MovementList movements={movements} setMovements={setMovements} />
       <Route movements={movements} route={route} setRoute={setRoute} />
       <Map movements={movements} route={route} />

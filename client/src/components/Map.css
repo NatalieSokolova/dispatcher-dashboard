@@ -1,5 +1,12 @@
 #map {
-  height: 80vh;
-  /* width: 50vw; */
-  /* background-color: aquamarine; */
+  height: 90vh;
+  width: 40vw;
+  margin: 5vh 2.5vw;
+}
+
+@media only screen and (max-width: 800px) {
+  #map {
+    width: 80vw;
+    margin: 2.5vh 10vw 7.5vh;
+  }
 }

@@ -3,6 +3,7 @@ import Form from "./Form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { notifySuccessDelete, notifyError } from "../helpers";
+import "./MovementList.css";
 
 export default function MovementList({ movements, setMovements }) {
   toast.configure();
@@ -57,53 +58,61 @@ export default function MovementList({ movements, setMovements }) {
   };
 
   return (
-    <div>
-      <div>Movements:</div>
-      <br />
-      {movements.map((movement, index) => (
-        <div key={index}>
-          <div>
-            Start Location: {movement.startLat}, {movement.startLong}
-          </div>
-          <div>
-            End Location: {movement.endLat}, {movement.endLong}
-          </div>
-          <div>Description: {movement.description}</div>
-          <div>
-            <button
-              onClick={(event) => {
-                showUpdateForm(event, movement, index);
-                setMovement(movement);
-                // console.log("M :", movement);
-              }}
-              type="submit"
-              // className="btn btn-default"
-            >
-              Update
-            </button>
-            <button
-              onClick={(event) => handleDelete(event, index)}
-              type="submit"
-              // className="btn btn-default"
-            >
-              Delete
-            </button>
-          </div>
-          <hr />
-        </div>
-      ))}
-      <button
-        onClick={() => {
-          setShowForm(true);
-          setMovement({});
-          // console.log("M :", movement);
-          setMovementIndex(null);
-        }}
-        // type="submit"
-        // className="btn btn-default"
-      >
-        Add Movement
-      </button>
+    <div id="movementContainer">
+      <h3 className="title">Current Movements:</h3>
+      <hr />
+      <ul className="list-group" id="movementList">
+        {movements.map((movement, index) => (
+          <li className="list-group-item" key={index}>
+            <div>
+              <h5>Start Location:</h5> {movement.startLat}, {movement.startLong}
+            </div>
+            <br />
+            <div>
+              <h5>End Location:</h5> {movement.endLat}, {movement.endLong}
+            </div>
+            <br />
+            <div>
+              <h5>Description:</h5> {movement.description}
+            </div>
+            <br />
+            <div className="btn-group">
+              <button
+                onClick={(event) => {
+                  showUpdateForm(event, movement, index);
+                  setMovement(movement);
+                  // console.log("M :", movement);
+                }}
+                type="button"
+                className="btn btn-primary"
+              >
+                Update
+              </button>
+              <button
+                onClick={(event) => handleDelete(event, index)}
+                type="button"
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className="btn-group">
+        <button
+          onClick={() => {
+            setShowForm(true);
+            setMovement({});
+            // console.log("M :", movement);
+            setMovementIndex(null);
+          }}
+          type="button"
+          className="btn btn-success"
+        >
+          Add Movement
+        </button>
+      </div>
       {showForm ? (
         <div>
           <Form

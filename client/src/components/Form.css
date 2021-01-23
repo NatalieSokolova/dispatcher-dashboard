@@ -1,0 +1,11 @@
+#movement-form {
+  width: 100%;
+  padding: 20px 30px 0;
+  margin-top: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+input {
+  width: 100%;
+}
