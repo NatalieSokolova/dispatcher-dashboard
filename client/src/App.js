@@ -29,7 +29,7 @@ function App() {
   }, [movements.length]);
 
   return (
-    <div>
+    <div id="dashboard">
       <MovementList movements={movements} setMovements={setMovements} />
       <Map movements={movements} />
     </div>

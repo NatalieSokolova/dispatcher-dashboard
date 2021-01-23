@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+#dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -26,6 +32,12 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@media only screen and (max-width: 800px) {
+  #dashboard {
+    flex-direction: column;
+  }
 }
 
 @keyframes App-logo-spin {
