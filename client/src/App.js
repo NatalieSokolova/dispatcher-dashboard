@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <MovementList movements={movements} setMovements={setMovements} />
-      <Map movements={movements} setMovements={setMovements} />
+      <Map movements={movements} />
     </div>
   );
 }
