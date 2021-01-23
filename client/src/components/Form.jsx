@@ -30,10 +30,10 @@ export default function Form({
 
     // object, which will be sent in a post or update request
     const newMovement = {
-      startLat: Number(movement.startLat),
-      startLong: Number(movement.startLong),
-      endLat: Number(movement.endLat),
-      endLong: Number(movement.endLong),
+      startLat: movement.startLat,
+      startLong: movement.startLong,
+      endLat: movement.endLat,
+      endLong: movement.endLong,
       description: movement.description,
     };
 
@@ -46,7 +46,7 @@ export default function Form({
   };
 
   const handlePost = (obj) => {
-    // console.log("POST IND: ", movementIndex);
+    console.log("POST IND: ", movementIndex);
 
     // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
@@ -109,7 +109,7 @@ export default function Form({
             <input
               autoComplete="off"
               // used to show values, when updating an existing movement
-              defaultValue={movement.startLat}
+              value={movement.startLat || ""}
               type="text"
               name="startLat"
               className="form-control"
@@ -117,7 +117,7 @@ export default function Form({
               onChange={handleChange}
             />
             <input
-              defaultValue={movement.startLong}
+              value={movement.startLong || ""}
               type="text"
               name="startLong"
               className="form-control"
@@ -132,7 +132,7 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
-              defaultValue={movement.endLat}
+              value={movement.endLat || ""}
               type="text"
               name="endLat"
               className="form-control"
@@ -140,7 +140,7 @@ export default function Form({
               onChange={handleChange}
             />
             <input
-              defaultValue={movement.endLong}
+              value={movement.endLong || ""}
               type="text"
               name="endLong"
               className="form-control"
@@ -155,7 +155,7 @@ export default function Form({
           </label>
           <div className="col-sm-10">
             <input
-              defaultValue={movement.description}
+              value={movement.description || ""}
               type="text"
               name="description"
               className="form-control"

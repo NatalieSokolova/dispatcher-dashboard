@@ -5,9 +5,9 @@ var router = express.Router();
 let movementList = [
   {
     startLat: "53.9333",
-    startLong: "116.5765",
+    startLong: "-116.5765",
     endLat: "51.0447",
-    endLong: "114.0719",
+    endLong: "-114.0719",
     description:
       "This is a very important test freight from Alberta to Calgary",
   },
@@ -15,7 +15,7 @@ let movementList = [
     startLat: "43.65107",
     startLong: "-79.347015",
     endLat: "45.5017",
-    endLong: "73.5673",
+    endLong: "-73.5673",
     description: "This is a very important test freight from TOR to MRL",
   },
 ];
