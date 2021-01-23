@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import "./Map.css";
 
 export default function Map({ movements }) {
@@ -19,22 +19,33 @@ export default function Map({ movements }) {
         {movements.map((movement, index) => (
           <div key={index}>
             <Marker position={[movement.startLat, movement.startLong]}>
-              <Popup>
-                <span>
-                  Location: {movement.startLat}, {movement.startLong}
-                  {movement.description}
-                </span>
-              </Popup>
-            </Marker>
-
-            <Marker position={[movement.endLat, movement.endLong]}>
-              <Popup>
+              <Tooltip
+                direction="bottom"
+                offset={[0, 20]}
+                opacity={1}
+                permanent
+              >
                 <span>
                   Location: {movement.endLat}, {movement.endLong}
                   <br />
                   {movement.description}
                 </span>
-              </Popup>
+              </Tooltip>
+            </Marker>
+
+            <Marker position={[movement.endLat, movement.endLong]}>
+              <Tooltip
+                direction="bottom"
+                offset={[0, 25]}
+                // opacity={1}
+                permanent
+              >
+                <span>
+                  Location: {movement.endLat}, {movement.endLong}
+                  <br />
+                  {movement.description}
+                </span>
+              </Tooltip>
             </Marker>
           </div>
         ))}
