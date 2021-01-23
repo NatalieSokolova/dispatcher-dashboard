@@ -5,10 +5,20 @@ import {
   Marker,
   Tooltip,
   Polyline,
+  // withLeaflet,
 } from "react-leaflet";
+// import L from "leaflet";
+// import "leaflet-routing-machine";
 import "./Map.css";
 
 export default function Map({ movements }) {
+  // L.Routing.control({
+  //   waypoints: [L.latLng(27.67, 85.316), L.latLng(27.68, 85.321)],
+  //   router: L.Routing.mapbox(
+  //     "pk.eyJ1IjoibmF0YWxpZXNrbHYiLCJhIjoiY2trOTNtdXRmMDhnYzJ3b2NhMmdmcDFlbCJ9.6jTgsEihWL1amNkT3KsSjA"
+  //   ),
+  // });
+
   return (
     <div>
       <MapContainer
