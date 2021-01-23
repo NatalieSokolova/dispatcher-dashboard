@@ -31,10 +31,12 @@ function App() {
   }, [movements.length]);
 
   return (
-    <div id="dashboard">
-      <MovementList movements={movements} setMovements={setMovements} />
+    <div>
+      <div id="dashboard">
+        <MovementList movements={movements} setMovements={setMovements} />
+        <Map movements={movements} route={route} />
+      </div>
       <Route movements={movements} route={route} setRoute={setRoute} />
-      <Map movements={movements} route={route} />
     </div>
   );
 }

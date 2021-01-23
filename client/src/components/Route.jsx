@@ -1,4 +1,5 @@
 import React from "react";
+import "./Route.css";
 
 export default function Route({ movements, route, setRoute }) {
   const checkRoute = (route, coordinates) => {
@@ -36,11 +37,17 @@ export default function Route({ movements, route, setRoute }) {
   };
 
   return (
-    <div>
+    <div id="route">
       {/* <button onClick={generateRoute} type="submit"> */}
-      <button type="submit" onClick={generateRoute}>
-        Generate Route
-      </button>
+      <div className="btn-group">
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={generateRoute}
+        >
+          Generate Route
+        </button>
+      </div>
       <div>Route</div>
     </div>
   );
