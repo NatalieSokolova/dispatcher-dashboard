@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovementList from "./components/MovementList";
 import Map from "./components/Map";
+import Route from "./components/Route";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notifyError } from "./helpers";
@@ -11,6 +12,7 @@ function App() {
   toast.configure();
 
   const [movements, setMovements] = useState([]);
+  const [route, setRoute] = useState([]);
 
   // console.log("MVMNTS: ", movements);
 
@@ -31,7 +33,8 @@ function App() {
   return (
     <div>
       <MovementList movements={movements} setMovements={setMovements} />
-      <Map movements={movements} />
+      <Route movements={movements} route={route} setRoute={setRoute} />
+      <Map movements={movements} route={route} />
     </div>
   );
 }
