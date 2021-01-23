@@ -35,7 +35,8 @@ export default function Map({ movements }) {
                 // permanent
               >
                 <span>
-                  Location: {movement.endLat}, {movement.endLong}
+                  Start: {movement.startLat}, {movement.startLong} / End:{" "}
+                  {movement.endLat}, {movement.endLong}
                   <br />
                   {movement.description}
                 </span>
@@ -49,7 +50,8 @@ export default function Map({ movements }) {
                 // permanent
               >
                 <span>
-                  Location: {movement.endLat}, {movement.endLong}
+                  Start: {movement.startLat}, {movement.startLong} / End:{" "}
+                  {movement.endLat}, {movement.endLong}
                   <br />
                   {movement.description}
                 </span>
