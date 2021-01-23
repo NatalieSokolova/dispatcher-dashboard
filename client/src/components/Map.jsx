@@ -60,6 +60,9 @@ export default function Map({ movements }) {
                 [movement.startLat, movement.startLong],
                 [movement.endLat, movement.endLong],
               ]}
+              pathOptions={{
+                color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+              }}
             />
           </div>
         ))}
