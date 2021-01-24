@@ -13,7 +13,7 @@ function App() {
 
   const [movements, setMovements] = useState([]);
   const [route, setRoute] = useState([]);
-  const [mapData, setMapData] = useState("movements");
+  const [mapData, setMapData] = useState("Movements");
 
   // console.log("MVMNTS: ", movements);
 

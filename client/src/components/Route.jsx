@@ -21,7 +21,7 @@ export default function Route({
   // console.log("ROUTE!: ", route);
 
   const showRoute = () => {
-    return [setRoute(generateRoute()), setMapData("route")];
+    return [setRoute(generateRoute()), setMapData("Route")];
   };
 
   const generateRoute = () => {
@@ -78,7 +78,7 @@ export default function Route({
           Generate Route
         </button>
       </div>
-      {mapData === "route" ? (
+      {mapData === "Route" ? (
         <div id="route-box">
           {route.map((location, index) => (
             <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>

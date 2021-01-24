@@ -1,17 +1,19 @@
 #route {
   width: 40vw;
-  margin: -125px 5vw;
+  margin-top: -75px;
+  margin-left: 6.25vw;
 }
 
 #route-box {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   padding: 12px 20px;
+  margin-bottom: 10vh;
 }
 
 @media only screen and (max-width: 800px) {
   #route {
     width: 80vw;
-    margin: 5vh 10vw;
+    margin: 0 10vw;
   }
 }
