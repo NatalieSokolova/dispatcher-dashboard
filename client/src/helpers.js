@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 const notifySuccessPost = (message) =>
   toast.success(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,
@@ -12,7 +11,6 @@ const notifySuccessPost = (message) =>
 const notifySuccessDelete = (message) =>
   toast.success(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,
@@ -21,7 +19,6 @@ const notifySuccessDelete = (message) =>
 const notifySuccessUpdate = (message) =>
   toast.success(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,
@@ -30,7 +27,6 @@ const notifySuccessUpdate = (message) =>
 const notifyEmptyFields = (message) =>
   toast.warning(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,
@@ -39,7 +35,6 @@ const notifyEmptyFields = (message) =>
 const notifyDuplicate = (message) =>
   toast.error(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,
@@ -48,7 +43,6 @@ const notifyDuplicate = (message) =>
 const notifyError = (message) =>
   toast.error(message, {
     autoClose: 5000,
-    // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     progress: undefined,

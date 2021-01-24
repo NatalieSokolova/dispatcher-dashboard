@@ -7,11 +7,7 @@ export default function RouteData({ route }) {
       {route.map((location, index) => (
         <div key={index}>
           <Marker position={location}>
-            <Tooltip
-              direction="bottom"
-              offset={[0, 20]}
-              // permanent
-            >
+            <Tooltip direction="bottom" offset={[0, 20]}>
               <span>
                 Coordinates: {location[0]}, {location[1]}
               </span>

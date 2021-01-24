@@ -7,11 +7,7 @@ export default function MovementData({ movements }) {
       {movements.map((movement, index) => (
         <div key={index}>
           <Marker position={[movement.startLat, movement.startLong]}>
-            <Tooltip
-              direction="bottom"
-              offset={[0, 20]}
-              // permanent
-            >
+            <Tooltip direction="bottom" offset={[0, 20]}>
               <span>
                 Start: {movement.startLat}, {movement.startLong} / End:
                 {movement.endLat}, {movement.endLong}
@@ -22,11 +18,7 @@ export default function MovementData({ movements }) {
           </Marker>
 
           <Marker position={[movement.endLat, movement.endLong]}>
-            <Tooltip
-              direction="bottom"
-              offset={[0, 25]}
-              // permanent
-            >
+            <Tooltip direction="bottom" offset={[0, 25]}>
               <span>
                 Start: {movement.startLat}, {movement.startLong} / End:{" "}
                 {movement.endLat}, {movement.endLong}

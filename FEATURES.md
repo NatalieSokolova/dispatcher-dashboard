@@ -29,7 +29,7 @@ It uses Leaflet package for Map component, react-toastify library for alerts, an
 - create unique movements (if an identical movement already exists - a dispatcher is shown an alert)
 - update an existing movement, as long as the updated movement is unique (otherwise - a dispatcher is shown an alert)
 - delete​ movements (they are shown a confirmation window first)
-- generate a ​Driver Route​ that consists of all available locations that need to be visited (a starting point is set at Rose Rocket office location. From there, the route begins at start coordinates closest to the starting point. The next position is the end location of the same movement. From there, the start coordinates, closest to the previous position are found and so on)
+- generate a ​Driver Route​ that consists of all available locations that need to be visited (a starting point is set at Rose Rocket office location. From there, the route begins at start coordinates closest to the starting point. The next position is the end location of the same movement. From there, the start coordinates, closest to the previous end position are found and so on)
 - see ​Driver Route​ on the map (continuous line of the same color). One needs to generate a new route after a movement has been created/deleted/updated
 - toggle between Movements​ and ​Driver Route​ views (to see the route, a dispatched needs to generate the route first)
 - enjoy this application on any device, as its design is responsive
