@@ -57,43 +57,48 @@ export default function MovementList({ movements, setMovements }) {
     <div id="movementContainer">
       <h3 className="title">Current Movements:</h3>
       <hr />
-      <ul className="list-group" id="movementList">
-        {movements.map((movement, index) => (
-          <li className="list-group-item" key={index}>
-            <div>
-              <h5>Start Location:</h5> {movement.startLat}, {movement.startLong}
-            </div>
-            <br />
-            <div>
-              <h5>End Location:</h5> {movement.endLat}, {movement.endLong}
-            </div>
-            <br />
-            <div>
-              <h5>Description:</h5> {movement.description}
-            </div>
-            <br />
-            <div className="btn-group">
-              <button
-                onClick={(event) => {
-                  showUpdateForm(event, movement, index);
-                  setMovement(movement);
-                }}
-                type="button"
-                className="btn btn-primary update-btn"
-              >
-                Update
-              </button>
-              <button
-                onClick={(event) => handleDelete(event, index)}
-                type="button"
-                className="btn btn-danger delete-btn"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {movements.length > 0 ? (
+        <ul className="list-group" id="movementList">
+          {movements.map((movement, index) => (
+            <li className="list-group-item" key={index}>
+              <div>
+                <h5>Start Location:</h5> {movement.startLat},{" "}
+                {movement.startLong}
+              </div>
+              <br />
+              <div>
+                <h5>End Location:</h5> {movement.endLat}, {movement.endLong}
+              </div>
+              <br />
+              <div>
+                <h5>Description:</h5> {movement.description}
+              </div>
+              <br />
+              <div className="btn-group">
+                <button
+                  onClick={(event) => {
+                    showUpdateForm(event, movement, index);
+                    setMovement(movement);
+                  }}
+                  type="button"
+                  className="btn btn-primary update-btn"
+                >
+                  Update
+                </button>
+                <button
+                  onClick={(event) => handleDelete(event, index)}
+                  type="button"
+                  className="btn btn-danger delete-btn"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h1>There are no available movements</h1>
+      )}
       <div className="btn-group">
         <button
           onClick={() => {

@@ -74,19 +74,17 @@ export default function Route({
               ))}
             </ul>
           ) : (
-            <div>Please, generate route first</div>
+            <div>Please, generate ​Driver Route​ first</div>
           )}
         </div>
         <div className="btn-group">
-          {route.length === 0 ? (
-            <button
-              type="button"
-              className="btn btn-success add-btn"
-              onClick={showRoute}
-            >
-              Generate Route
-            </button>
-          ) : null}
+          <button
+            type="button"
+            className="btn btn-success add-btn"
+            onClick={showRoute}
+          >
+            Generate ​New Driver Route​
+          </button>
         </div>
       </div>
     </div>
