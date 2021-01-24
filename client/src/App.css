@@ -13,6 +13,10 @@
   justify-content: space-around;
 }
 
+body {
+  background-color: #d9dddc;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

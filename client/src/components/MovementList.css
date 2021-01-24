@@ -24,6 +24,18 @@
   border-radius: 0.25rem !important;
 }
 
+.update-btn {
+  background: #4682b4;
+}
+
+.delete-btn {
+  background: #f08080;
+}
+
+.add-btn {
+  background: #3cb371;
+}
+
 @media only screen and (max-width: 800px) {
   #movementContainer {
     width: 80vw;

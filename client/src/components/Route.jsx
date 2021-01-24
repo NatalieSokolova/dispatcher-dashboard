@@ -67,17 +67,22 @@ export default function Route({
         <hr />
         <div id="route-box">
           {route.length > 0 ? (
-            <div>
+            <ul>
+              <br />
               {route.map((location, index) => (
-                <span key={index}>{`[${location[0]}, ${location[1]}] - `}</span>
+                <li key={index}>{`[${location[0]}, ${location[1]}]`}</li>
               ))}
-            </div>
+            </ul>
           ) : (
             <div>Please, generate route first</div>
           )}
         </div>
         <div className="btn-group">
-          <button type="button" className="btn btn-success" onClick={showRoute}>
+          <button
+            type="button"
+            className="btn btn-success add-btn"
+            onClick={showRoute}
+          >
             Generate Route
           </button>
         </div>

@@ -176,7 +176,7 @@ export default function Form({
           <button
             onClick={handleSubmit}
             type="button"
-            className="btn btn-success"
+            className="btn btn-success add-btn"
           >
             Submit
           </button>

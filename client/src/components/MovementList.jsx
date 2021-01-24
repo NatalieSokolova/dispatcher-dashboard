@@ -79,14 +79,14 @@ export default function MovementList({ movements, setMovements }) {
                   setMovement(movement);
                 }}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary update-btn"
               >
                 Update
               </button>
               <button
                 onClick={(event) => handleDelete(event, index)}
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-danger delete-btn"
               >
                 Delete
               </button>
@@ -102,7 +102,7 @@ export default function MovementList({ movements, setMovements }) {
             setMovementIndex(null);
           }}
           type="button"
-          className="btn btn-success"
+          className="btn btn-success add-btn"
         >
           Add Movement
         </button>

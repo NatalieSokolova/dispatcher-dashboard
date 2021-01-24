@@ -1,7 +1,17 @@
 #map {
-  height: 80vh;
-  margin: 7.5vh 0 1vh;
+  height: 79vh;
+  margin: 7vh 0 1vh;
   width: 40vw;
+}
+
+.toggle-btn {
+  background-color: #f4a460;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background-color: #d2691e;
+  color: white;
 }
 
 @media only screen and (max-width: 800px) {
