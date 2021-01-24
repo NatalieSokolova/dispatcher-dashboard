@@ -1,7 +1,7 @@
 # Rose Rocket Coding Challenge
 
-The app is built with React (frontend) and Express (backend).
-It uses Leaflet API for Map component, react-toastify library for alerts, and Bootstrap for styling
+The app is built with React (frontend), Express (backend), and uses Axios to send requests.
+It uses Leaflet package for Map component, react-toastify library for alerts, and Bootstrap for styling
 
 ### API:
 
@@ -16,6 +16,7 @@ It uses Leaflet API for Map component, react-toastify library for alerts, and Bo
 ### Demo
 
 !["Dispatcher generates a route"](https://recordit.co/haoDjog9NR.gif)
+
 !["Dispatcher attempts to create a new movement"](https://recordit.co/RTqZ7qfTlM.gif)
 
 ## Features
