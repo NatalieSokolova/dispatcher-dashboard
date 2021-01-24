@@ -2,38 +2,31 @@ import React from "react";
 import "./Route.css";
 
 export default function Route({ movements, route, setRoute }) {
-  const checkRoute = (route, coordinates) => {
-    return route.some((city) =>
-      coordinates.every((position, index) => position === city[index])
-    );
+  // console.log("MV: ", movements);
+
+  const findClosestLocation = (startingLocation, locationData) => {
+    const vectorDistance = (dx, dy) => {
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
+    const locationDistance = (location1, location2) => {
+      const dx = location1.latitude - location2.latitude,
+        dy = location1.longitude - location2.longitude;
+
+      return vectorDistance(dx, dy);
+    };
+
+    return locationData.reduce((prev, curr) => {
+      const prevDistance = locationDistance(startingLocation, prev),
+        currDistance = locationDistance(startingLocation, curr);
+      console.log(prevDistance < currDistance ? prev : curr);
+      return prevDistance < currDistance ? prev : curr;
+    });
   };
 
-  const generateRoute = () => {
-    let cities = [];
-
-    // loops over movements
-    movements.forEach((movement, index) => {
-      const startCoordinates = [
-        Number(movement.startLat),
-        Number(movement.startLong),
-      ];
-      const endCoordinates = [
-        Number(movement.endLat),
-        Number(movement.endLong),
-      ];
-      // check if starting city coordinates are present in a route array
-      // some() tests whether at least one city passes check defined in every()
-      // every() tests whether lat and long are present in cities
-      if (!checkRoute(cities, startCoordinates)) {
-        // if not => push city into cities
-        cities.push(startCoordinates);
-      } else if (!checkRoute(cities, endCoordinates)) {
-        cities.push(endCoordinates);
-      }
-
-      return cities;
-    });
-    console.log("CITIES: ", cities);
+  let startingLocation = {
+    latitude: 43.65107,
+    longitude: -79.347015,
   };
 
   return (
@@ -43,7 +36,8 @@ export default function Route({ movements, route, setRoute }) {
         <button
           type="button"
           className="btn btn-success"
-          onClick={generateRoute}
+          // onClick={generateRoute}
+          onClick={() => findClosestLocation(startingLocation, movements)}
         >
           Generate Route
         </button>

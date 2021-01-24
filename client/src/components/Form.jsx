@@ -117,84 +117,81 @@ export default function Form({
   };
 
   return (
-    <div>
-      {/* {console.log("MOV: ", movement)} */}
-      <form className="form-horizontal" id="movement-form">
-        <div className="form-group">
-          <label htmlFor="start" className="col-sm-2 control-label">
-            start:
-          </label>
-          <span className="input-group">
-            <input
-              autoComplete="off"
-              // used to show values, when updating an existing movement
-              value={movement.startLat || ""}
-              type="text"
-              name="startLat"
-              className="form-control"
-              placeholder="latitude"
-              onChange={handleChange}
-            />
-            <input
-              value={movement.startLong || ""}
-              type="text"
-              name="startLong"
-              className="form-control"
-              placeholder="longitude"
-              onChange={handleChange}
-            />
-          </span>
+    <form className="form-horizontal" id="movement-form">
+      <div className="form-group">
+        <label htmlFor="start" className="col-sm-2 control-label">
+          start:
+        </label>
+        <span className="input-group">
+          <input
+            autoComplete="off"
+            // used to show values, when updating an existing movement
+            value={movement.startLat || ""}
+            type="text"
+            name="startLat"
+            className="form-control"
+            placeholder="latitude"
+            onChange={handleChange}
+          />
+          <input
+            value={movement.startLong || ""}
+            type="text"
+            name="startLong"
+            className="form-control"
+            placeholder="longitude"
+            onChange={handleChange}
+          />
+        </span>
+      </div>
+      <div className="form-group">
+        <label htmlFor="end" className="col-sm-2 control-label">
+          end:
+        </label>
+        <span className="input-group">
+          <input
+            value={movement.endLat || ""}
+            type="text"
+            name="endLat"
+            className="form-control"
+            placeholder="latitude"
+            onChange={handleChange}
+          />
+          <input
+            value={movement.endLong || ""}
+            type="text"
+            name="endLong"
+            className="form-control"
+            placeholder="longitude"
+            onChange={handleChange}
+          />
+        </span>
+      </div>
+      <div className="form-group">
+        <label htmlFor="description" className="col-sm-2 control-label">
+          description:
+        </label>
+        <div>
+          <textarea
+            value={movement.description || ""}
+            type="text"
+            name="description"
+            className="form-control"
+            placeholder="freight description"
+            onChange={handleChange}
+          />
         </div>
-        <div className="form-group">
-          <label htmlFor="end" className="col-sm-2 control-label">
-            end:
-          </label>
-          <span className="input-group">
-            <input
-              value={movement.endLat || ""}
-              type="text"
-              name="endLat"
-              className="form-control"
-              placeholder="latitude"
-              onChange={handleChange}
-            />
-            <input
-              value={movement.endLong || ""}
-              type="text"
-              name="endLong"
-              className="form-control"
-              placeholder="longitude"
-              onChange={handleChange}
-            />
-          </span>
+      </div>
+      <div className="form-group">
+        <div className="col-sm-offset-2 btn-group">
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="btn btn-success"
+          >
+            Submit
+          </button>
         </div>
-        <div className="form-group">
-          <label htmlFor="description" className="col-sm-2 control-label">
-            description:
-          </label>
-          <div>
-            <textarea
-              value={movement.description || ""}
-              type="text"
-              name="description"
-              className="form-control"
-              placeholder="freight description"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-offset-2 btn-group">
-            <button
-              onClick={handleSubmit}
-              type="button"
-              className="btn btn-success"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
