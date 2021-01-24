@@ -78,6 +78,67 @@ const isFilledOut = (obj) => {
   );
 };
 
+// finds closest location to a starting point
+const findClosest = (startingLocation, locationData) => {
+  const vectorDistance = (dx, dy) => {
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const locationDistance = (location1, location2) => {
+    const dx = location1[0] - location2[0],
+      dy = location1[1] - location2[1];
+
+    return vectorDistance(dx, dy);
+  };
+
+  return locationData.reduce((prev, curr) => {
+    const prevDistance = locationDistance(startingLocation, prev),
+      currDistance = locationDistance(startingLocation, curr);
+    return prevDistance < currDistance ? prev : curr;
+  });
+};
+
+// creates a list of movements' starting coordinates
+const generateLocationData = (array) => {
+  let cities = [];
+
+  array.forEach((element) => {
+    const startCoordinates = [
+      Number(element.startLat),
+      Number(element.startLong),
+    ];
+
+    cities.push(startCoordinates);
+  });
+  return cities;
+};
+
+const addLocation = (location1, location2, arr) => {
+  if (location1) {
+    if (location1[0] !== location2[0] && location1[1] !== location2[1]) {
+      return arr.push(location2);
+    }
+  } else {
+    return arr.push(location2);
+  }
+};
+
+const findCurrentMovement = (arr, location) => {
+  return arr.find(
+    (element) =>
+      Number(element.startLat) === location[0] &&
+      Number(element.startLong) === location[1]
+  );
+};
+
+const removeLocation = (arr, location) => {
+  const index = arr.findIndex(
+    (loc) => loc[0] === location[0] && loc[1] === location[1]
+  );
+
+  return arr.splice(index, 1);
+};
+
 export {
   isDuplicate,
   isFilledOut,
@@ -87,4 +148,9 @@ export {
   notifyEmptyFields,
   notifyDuplicate,
   notifyError,
+  findClosest,
+  generateLocationData,
+  addLocation,
+  findCurrentMovement,
+  removeLocation,
 };
