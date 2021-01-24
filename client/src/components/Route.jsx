@@ -8,14 +8,20 @@ import {
 } from "../helpers";
 import "./Route.css";
 
-export default function Route({ movements, route, setRoute }) {
+export default function Route({
+  movements,
+  route,
+  setRoute,
+  mapData,
+  setMapData,
+}) {
   // uses RoseRocket office coordinates as a starting point
   let startingLocation = [43.647434073309206, -79.3736451878583];
 
-  console.log("ROUTE!: ", route);
+  // console.log("ROUTE!: ", route);
 
-  const updateRoute = () => {
-    return setRoute(generateRoute());
+  const showRoute = () => {
+    return [setRoute(generateRoute()), setMapData("route")];
   };
 
   const generateRoute = () => {
@@ -68,13 +74,13 @@ export default function Route({ movements, route, setRoute }) {
   return (
     <div id="route">
       <div className="btn-group">
-        <button type="button" className="btn btn-success" onClick={updateRoute}>
+        <button type="button" className="btn btn-success" onClick={showRoute}>
           Generate Route
         </button>
       </div>
       <div>
-        {route.map((location) => (
-          <span> {`${location[0]}, ${location[1]} =>`}</span>
+        {route.map((location, index) => (
+          <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>
         ))}
       </div>
     </div>

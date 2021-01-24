@@ -13,6 +13,7 @@ function App() {
 
   const [movements, setMovements] = useState([]);
   const [route, setRoute] = useState([]);
+  const [mapData, setMapData] = useState("movements");
 
   // console.log("MVMNTS: ", movements);
 
@@ -34,9 +35,20 @@ function App() {
     <div>
       <div id="dashboard">
         <MovementList movements={movements} setMovements={setMovements} />
-        <Map movements={movements} route={route} />
+        <Map
+          movements={movements}
+          route={route}
+          mapData={mapData}
+          setMapData={setMapData}
+        />
       </div>
-      <Route movements={movements} route={route} setRoute={setRoute} />
+      <Route
+        movements={movements}
+        route={route}
+        setRoute={setRoute}
+        mapData={mapData}
+        setMapData={setMapData}
+      />
     </div>
   );
 }
