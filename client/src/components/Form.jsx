@@ -27,9 +27,6 @@ export default function Form({
     const name = target.name;
     const value = target.value;
 
-    // console.log("NAME: ", name);
-    // console.log("VALUE: ", value);
-
     // updates state with form input values
     setMovement({
       ...movement,
@@ -49,8 +46,6 @@ export default function Form({
       description: movement.description,
     };
 
-    // console.log("IND: ", movementIndex);
-
     // sends either update or post request based on whether "update" or "add movement" btn was clicked
     movementIndex !== null
       ? handleUpdate(newMovement, movementIndex)
@@ -58,13 +53,10 @@ export default function Form({
   };
 
   const handlePost = (obj) => {
-    console.log("POST IND: ", movementIndex);
-
     // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
       // checks if a movement with the same values already exists
       if (!isDuplicate(movement, movements)) {
-        console.log("MMM: ", movement);
         axios
           .post("http://localhost:3001/movements", obj)
           .then(
@@ -87,8 +79,6 @@ export default function Form({
   };
 
   const handleUpdate = (obj, index) => {
-    console.log("UPD IND: ", movementIndex);
-
     // checks if all the fields in a form are filled out first
     if (isFilledOut(obj)) {
       // checks if a movement with the same values already exists

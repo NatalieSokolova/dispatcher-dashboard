@@ -5,9 +5,6 @@ import RouteData from "./RouteData";
 import "./Map.css";
 
 export default function Map({ movements, route, mapData, setMapData }) {
-  // console.log("ROUTE!: ", route);
-  // console.log("mapData!: ", mapData);
-
   return (
     <div>
       <MapContainer

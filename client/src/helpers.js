@@ -68,7 +68,6 @@ const isDuplicate = (obj, arr) => {
 
 // checks if all the fields in a form are filled out
 const isFilledOut = (obj) => {
-  console.log("OBJ: ", obj);
   return (
     obj.startLat &&
     obj.startLong &&

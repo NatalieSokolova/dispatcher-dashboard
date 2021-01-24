@@ -15,8 +15,6 @@ function App() {
   const [route, setRoute] = useState([]);
   const [mapData, setMapData] = useState("Movements");
 
-  // console.log("MVMNTS: ", movements);
-
   useEffect(() => {
     axios({
       method: "GET",

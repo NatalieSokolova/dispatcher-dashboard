@@ -6,7 +6,6 @@ export default function RouteData({ route }) {
     <div>
       {route.map((location, index) => (
         <div key={index}>
-          {console.log("L: ", location)}
           <Marker position={location}>
             <Tooltip
               direction="bottom"
