@@ -73,18 +73,26 @@ export default function Route({
 
   return (
     <div id="route">
-      <div className="btn-group">
-        <button type="button" className="btn btn-success" onClick={showRoute}>
-          Generate Route
-        </button>
-      </div>
-      {mapData === "Route" ? (
+      <div>
+        <h3 className="title">Current Route:</h3>
+        <hr />
         <div id="route-box">
-          {route.map((location, index) => (
-            <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>
-          ))}
+          {route.length > 0 ? (
+            <div>
+              {route.map((location, index) => (
+                <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>
+              ))}
+            </div>
+          ) : (
+            <div>Please, generate route first</div>
+          )}
         </div>
-      ) : null}
+        <div className="btn-group">
+          <button type="button" className="btn btn-success" onClick={showRoute}>
+            Generate Route
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

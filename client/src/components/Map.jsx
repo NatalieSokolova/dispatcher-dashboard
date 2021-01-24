@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Tooltip,
-  Polyline,
-} from "react-leaflet";
-
+import { MapContainer, TileLayer } from "react-leaflet";
+import MovementData from "./MovementData";
+import RouteData from "./RouteData";
 import "./Map.css";
 
 export default function Map({ movements, route, mapData, setMapData }) {
-  console.log("ROUTE!: ", route);
-  console.log("mapData!: ", mapData);
+  // console.log("ROUTE!: ", route);
+  // console.log("mapData!: ", mapData);
 
   return (
     <div>
@@ -29,60 +24,24 @@ export default function Map({ movements, route, mapData, setMapData }) {
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
           access_token="pk.eyJ1IjoibmF0YWxpZXNrbHYiLCJhIjoiY2trOTNtdXRmMDhnYzJ3b2NhMmdmcDFlbCJ9.6jTgsEihWL1amNkT3KsSjA"
         />
-
-        {movements.map((movement, index) => (
-          <div key={index}>
-            <Marker position={[movement.startLat, movement.startLong]}>
-              <Tooltip
-                direction="bottom"
-                offset={[0, 20]}
-                // permanent
-              >
-                <span>
-                  Start: {movement.startLat}, {movement.startLong} / End:{" "}
-                  {movement.endLat}, {movement.endLong}
-                  <br />
-                  {movement.description}
-                </span>
-              </Tooltip>
-            </Marker>
-
-            <Marker position={[movement.endLat, movement.endLong]}>
-              <Tooltip
-                direction="bottom"
-                offset={[0, 25]}
-                // permanent
-              >
-                <span>
-                  Start: {movement.startLat}, {movement.startLong} / End:{" "}
-                  {movement.endLat}, {movement.endLong}
-                  <br />
-                  {movement.description}
-                </span>
-              </Tooltip>
-            </Marker>
-            <Polyline
-              positions={[
-                [movement.startLat, movement.startLong],
-                [movement.endLat, movement.endLong],
-              ]}
-              pathOptions={{
-                color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-              }}
-            />
-          </div>
-        ))}
+        {mapData === "Movements" ? (
+          <MovementData movements={movements} />
+        ) : (
+          <RouteData route={route} />
+        )}
       </MapContainer>
       <div className="btn-group" id="toggle">
-        <button
-          onClick={() => {
-            setMapData(mapData === "Movements" ? "Route" : "Movements");
-          }}
-          type="button"
-          className="btn btn-success"
-        >
-          Show {mapData === "Movements" ? "Route" : "Movements"}
-        </button>
+        {route.length > 0 ? (
+          <button
+            onClick={() => {
+              setMapData(mapData === "Movements" ? "Route" : "Movements");
+            }}
+            type="button"
+            className="btn btn-success"
+          >
+            Show {mapData === "Movements" ? "Route" : "Movements"}
+          </button>
+        ) : null}
       </div>
     </div>
   );

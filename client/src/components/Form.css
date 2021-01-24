@@ -1,7 +1,7 @@
 #movement-form {
   width: 100%;
   padding: 20px 30px 0;
-  margin: 25px 0 100px;
+  margin: 25px 0;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
