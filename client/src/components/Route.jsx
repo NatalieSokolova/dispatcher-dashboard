@@ -78,13 +78,15 @@ export default function Route({
           )}
         </div>
         <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-success add-btn"
-            onClick={showRoute}
-          >
-            Generate Route
-          </button>
+          {route.length === 0 ? (
+            <button
+              type="button"
+              className="btn btn-success add-btn"
+              onClick={showRoute}
+            >
+              Generate Route
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
