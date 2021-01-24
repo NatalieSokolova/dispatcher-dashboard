@@ -12,6 +12,12 @@ export default function Route({ movements, route, setRoute }) {
   // uses RoseRocket office coordinates as a starting point
   let startingLocation = [43.647434073309206, -79.3736451878583];
 
+  console.log("ROUTE!: ", route);
+
+  const updateRoute = () => {
+    return setRoute(generateRoute());
+  };
+
   const generateRoute = () => {
     let generatedRoute = [];
     // creates a list of movements' starting coordinates
@@ -56,20 +62,21 @@ export default function Route({ movements, route, setRoute }) {
       // console.log("startingLocation: ", startingLocation);
       // console.log("locationStartCoords: ", locationStartCoords);
     }
+    return generatedRoute;
   };
 
   return (
     <div id="route">
       <div className="btn-group">
-        <button
-          type="button"
-          className="btn btn-success"
-          onClick={generateRoute}
-        >
+        <button type="button" className="btn btn-success" onClick={updateRoute}>
           Generate Route
         </button>
       </div>
-      <div>Route</div>
+      <div>
+        {route.map((location) => (
+          <span> {`${location[0]}, ${location[1]} =>`}</span>
+        ))}
+      </div>
     </div>
   );
 }
