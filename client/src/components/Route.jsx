@@ -78,11 +78,13 @@ export default function Route({
           Generate Route
         </button>
       </div>
-      <div>
-        {route.map((location, index) => (
-          <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>
-        ))}
-      </div>
+      {mapData === "route" ? (
+        <div id="route-box">
+          {route.map((location, index) => (
+            <span key={index}> {`${location[0]}, ${location[1]} =>`}</span>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
