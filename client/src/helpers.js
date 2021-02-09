@@ -1,52 +1,15 @@
 import { toast } from "react-toastify";
 
-const notifySuccessPost = (message) =>
-  toast.success(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
+const toastConfig = {
+  autoClose: 5000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  progress: undefined,
+};
 
-const notifySuccessDelete = (message) =>
-  toast.success(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
-
-const notifySuccessUpdate = (message) =>
-  toast.success(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
-
-const notifyEmptyFields = (message) =>
-  toast.warning(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
-
-const notifyDuplicate = (message) =>
-  toast.error(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
-
-const notifyError = (message) =>
-  toast.error(message, {
-    autoClose: 5000,
-    closeOnClick: true,
-    pauseOnHover: true,
-    progress: undefined,
-  });
+const notifySuccess = (message) => toast.success(message, toastConfig);
+const notifyEmptyFields = (message) => toast.warning(message, toastConfig);
+const notifyError = (message) => toast.error(message, toastConfig);
 
 // checks is a movement already exists
 const isDuplicate = (obj, arr) => {
@@ -135,11 +98,8 @@ const removeLocation = (arr, location) => {
 export {
   isDuplicate,
   isFilledOut,
-  notifySuccessPost,
-  notifySuccessDelete,
-  notifySuccessUpdate,
+  notifySuccess,
   notifyEmptyFields,
-  notifyDuplicate,
   notifyError,
   findClosest,
   generateLocationData,

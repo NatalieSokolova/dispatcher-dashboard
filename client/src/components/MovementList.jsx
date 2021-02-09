@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "./Form";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { notifySuccessDelete, notifyError } from "../helpers";
+import { notifySuccess, notifyError } from "../helpers";
 import "./MovementList.css";
 
 export default function MovementList({ movements, setMovements }) {
@@ -37,7 +37,7 @@ export default function MovementList({ movements, setMovements }) {
           setShowForm(false);
           setMovement({});
           setMovementIndex(null);
-          notifySuccessDelete("Movement deleted!");
+          notifySuccess("Movement deleted!");
         })
         .catch((err) => {
           notifyError("OOPS! Something went wrong. Please, try again");

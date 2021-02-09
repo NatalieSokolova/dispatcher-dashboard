@@ -18,7 +18,7 @@ export default function MovementData({ movements }) {
           </Marker>
 
           <Marker position={[movement.endLat, movement.endLong]}>
-            <Tooltip direction="bottom" offset={[0, 25]}>
+            <Tooltip direction="bottom" offset={[0, 20]}>
               <span>
                 Start: {movement.startLat}, {movement.startLong} / End:{" "}
                 {movement.endLat}, {movement.endLong}

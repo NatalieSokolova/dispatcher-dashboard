@@ -5,10 +5,8 @@ import {
   isDuplicate,
   isFilledOut,
   notifyError,
-  notifySuccessPost,
-  notifySuccessUpdate,
+  notifySuccess,
   notifyEmptyFields,
-  notifyDuplicate,
 } from "../helpers";
 import "./Form.css";
 
@@ -64,14 +62,14 @@ export default function Form({
             setMovements((prev) => [...prev, obj]),
             // hides form on successful submit
             setShowForm(false),
-            notifySuccessPost("Movement created!")
+            notifySuccess("Movement created!")
           )
           .catch((err) => {
             notifyError("OOPS! Something went wrong. Please, try again");
             console.log(err);
           });
       } else {
-        notifyDuplicate("Sorry, movement already exists!");
+        notifyError("Sorry, movement already exists!");
       }
     } else {
       notifyEmptyFields("Please, fill out all the fields!");
@@ -92,14 +90,14 @@ export default function Form({
             setMovements((prev) => [...prev, obj]),
             // hides form on successful submit
             setShowForm(false),
-            notifySuccessUpdate("Movement updated!")
+            notifySuccess("Movement updated!")
           )
           .catch((err) => {
             notifyError("OOPS! Something went wrong. Please, try again");
             console.log(err);
           });
       } else {
-        notifyDuplicate("Sorry, movement already exists!");
+        notifyError("Sorry, movement already exists!");
       }
     } else {
       notifyEmptyFields("Please, fill out all the fields!");

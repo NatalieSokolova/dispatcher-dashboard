@@ -8,13 +8,7 @@ import {
 } from "../helpers";
 import "./Route.css";
 
-export default function Route({
-  movements,
-  route,
-  setRoute,
-  mapData,
-  setMapData,
-}) {
+export default function Route({ movements, route, setRoute, setMapData }) {
   // uses RoseRocket office coordinates as a starting point
   let startingLocation = [43.647434073309206, -79.3736451878583];
 
@@ -33,16 +27,17 @@ export default function Route({
       // finds movement with starting coordinates, closest to the startingLocation
       const closest = findClosest(startingLocation, locationStartCoords);
 
-      // pushes starting coordinates of the closest city to generatedRoute
+      // gets coordinates for the last location in generatedRoute
       let lastVisited = generatedRoute[generatedRoute.length - 1];
 
       // first checks if lastVisited is defined(if generatedRoute has any data)
+      // then checks if lastVisited is the same as next closest location
       addLocation(lastVisited, closest, generatedRoute);
 
-      // gets data for current movement
+      // gets data for current movement (both start and end coordinates)
       const currentMovement = findCurrentMovement(movements, closest);
 
-      // removes startingLocation from locationStartCoords
+      // removes startingLocation from locationStartCoords to avoid duplication
       removeLocation(locationStartCoords, closest);
 
       // pushes ending coordinates of the closest city to generatedRoute

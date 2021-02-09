@@ -53,7 +53,7 @@ router.delete("/", (req, res) => {
 
 router.put("/", (req, res) => {
   movementList.splice(req.body.data.index, 1, req.body.data.movement);
-  res.send("movement udated!");
+  res.send("movement updated!");
 });
 
 module.exports = router;
