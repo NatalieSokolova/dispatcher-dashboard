@@ -40,21 +40,11 @@ export default function Route({ movements, route, setRoute, setMapData }) {
       // removes startingLocation from locationStartCoords to avoid duplication
       removeLocation(locationStartCoords, closest);
 
-      if (i < numOfIterations - 1) {
-        // pushes ending coordinates of the closest city to locationStartCoords
-        locationStartCoords.push([
-          Number(currentMovement.endLat),
-          Number(currentMovement.endLong),
-        ]);
-
-        // pushes ending coordinates of the closest city to generatedRoute
-        generatedRoute.push([
-          Number(currentMovement.endLat),
-          Number(currentMovement.endLong),
-        ]);
-      }
-      console.log("currentMovement: ", currentMovement);
-      console.log("locationStartCoords: ", locationStartCoords);
+      // pushes ending coordinates of the closest city to generatedRoute
+      generatedRoute.push([
+        Number(currentMovement.endLat),
+        Number(currentMovement.endLong),
+      ]);
 
       // reassigns value of the startingLocation to the end coordinates of the current movement
       startingLocation = [
